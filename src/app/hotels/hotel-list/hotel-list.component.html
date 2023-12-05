@@ -1,0 +1,61 @@
+<p>hotel-list works!</p>
+<!-- 
+<h3> seleted data :  {{ city}}  </h3>
+<h3>{{inDate }} {{outDate}} </h3>
+<h3>{{rooms}}</h3> -->
+
+<div class="container-fluid bg-info">
+    <ul class="nav w-75 justify-content-around">
+        <li class="nav-item">
+           
+          <a class="nav-link text-dark" aria-current="page" > Sort By: &nbsp;&nbsp;&nbsp;Popular</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" (click)="sortHotels('Rating')" >User Ratings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark"(click)="sortHotels('prize_high')" >Price(Hightest First)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" (click)="sortHotels('prize_low')" >Price (lowest First)</a>
+        </li>
+      </ul>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 border p-2">
+  <app-filter (emitobj)="getFilterCriteria($event)"></app-filter>
+        </div> 
+        <div class="col-md-7 d-flex p-2">
+            <div class="d-flex flex-column mb-3">
+                <div class="p-2 border d-flex" *ngFor="let item of hotellist">
+                    <img [src]="item.media[0].url"  width="250" height="200" >
+                    <!-- <div  *ngFor="let item of hotellist">
+                        <h4>{{item.name}}</h4>
+                        <h5>{{item.locationPersuasion}}</h5>
+                        <h5></h5>
+                     </div> -->
+                     <div class="w-50 m-2">
+                        <strong>{{item.name}} </strong>
+                        <br> {{item.locationPersuasion[0]}} 
+                       
+                     </div>
+                     <div class="w-25 text-end">
+                        <h6>{{item.reviewSummary.ratingText}}  &nbsp;  <span class="badge bg-info">  {{ item.reviewSummary.hotelRatingSummary[0].value }}</span></h6>
+                    
+                    
+                        <br>
+                        ({{item.reviewSummary.totalRatingCount}} ratings)<br>
+                        <h5>  ₹. {{item.priceDetail.price}}</h5>
+
+                     </div>
+                </div>
+                
+                <div class="col-sm-4">
+
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<p>filter works!</p>
+<div class="container border">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center"> Serch Filter</h3>
+            <div class="user-rating" *ngIf="filterob.rating!=undefined">
+                <h6>User Rating</h6>
+                <div class="form-check" *ngFor="let item of filterob.rating ;let i=index">
+                    <input class="form-check-input" type="checkbox" name="rating + {{i}}" [(ngModel)] ="item.isSelected" (ngModelChange)="emitdata(item)" value="" id="flexCheckDisabled" >
+                    <label class="form-check-label" for="flexCheckDisabled">
+                        {{item.filtervalue}} Rating
+                    </label>
+                </div>
+                
+            </div>
+
+            <div class="Pricepernight" *ngIf="filterob.pricepernight!=undefined">
+                <h6> Price per night</h6>
+                <div class="form-check" *ngFor="let item of filterob.pricepernight ;let i=index">
+                    <input class="form-check-input" type="checkbox" name="pri + {{i}}" [(ngModel)] ="item.isSelected" (ngModelChange)="emitdata(item)"  value="" id="flexCheckDisabled" >
+                    <label class="form-check-label" for="flexCheckDisabled">
+                        ₹.{{item.filterRange.min}}  -  ₹.{{item.filterRange.max}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
